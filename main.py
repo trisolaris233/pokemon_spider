@@ -61,38 +61,38 @@ if __name__ == "__main__":
     for i in range(3, 151):
         t = 1
         if i == 3:
-            t = 42
+            t = 100
         for j in range(t, 151):
             img_url = '{_root}/{_i}/{_i}.{_j}.png'.format(_root=url, _i=i,_j=j)
 
-            print("requesting image i={_i},j={_j}".format(_i=i,_j=j))
+            print("requesting i={_i},j={_j}".format(_i=i,_j=j))
             while True:
                 try:
-                    r = requests.get(img_url, timeout=10)
+                    r = requests.get(img_url, timeout=5)
                     break
                 except requests.exceptions.ConnectionError:
                     print('i={_i} j={_j} Connection Error'.format(_i=i,_j=j))
-                    time.sleep(3)
+                    time.sleep(1)
                 except:
                     print("Unknown err")
-                    time.sleep(3)
+                    time.sleep(1)
             img_content = r.content
             number1 = i
             number2 = j
 
-            print("requesting pokemon name i={_i},j={_j}".format(_i=i,_j=j))
+            #print("requesting pokemon name i={_i},j={_j}".format(_i=i,_j=j))
             name_url = "https://pokemon.alexonsager.net/zh/{_i}/{_j}".format(_i=i,_j=j)
-            print("requesting image i={_i},j={_j}".format(_i=i,_j=j))
+            #print("requesting image i={_i},j={_j}".format(_i=i,_j=j))
             while True:
                 try:
-                    r = requests.get(name_url, timeout=10)
+                    r = requests.get(name_url, timeout=5)
                     break
                 except requests.exceptions.ConnectionError:
                     print('i={_i} j={_j} Connection Error'.format(_i=i,_j=j))
-                    time.sleep(3)
+                    time.sleep(1)
                 except:
                     print("Unknown err")
-                    time.sleep(3)
+                    time.sleep(1)
             
             
             soup = BeautifulSoup(r.text, 'html.parser')
