@@ -1,4 +1,6 @@
 *.png
 /img/
-*.tar.gz
+/fr/
+/en/
+/ja/
 *.out
